@@ -5,14 +5,17 @@
 ## reload aliases
 alias reload='source $ZSH/oh-my-zsh.sh'
 
+alias aliasRefresh='source $CLIBS/aliases.zsh'
+
 ## open aliases
 alias ea='subl -n $CLIBS/aliases.zsh'
 
 ## show all aliases
 alias showa='$ZSH/custom/tools/readfile.sh $CLIBS/aliases.zsh'
 
-## clear dns
-alias cleardns='sudo killall -HUP mDNSResponder'
+function aliasSearch {
+    showa | grep $1
+}
 
 ################################
 #----------- Finder -----------#
@@ -21,23 +24,39 @@ alias cleardns='sudo killall -HUP mDNSResponder'
 ## open finder in current directory
 alias o='open . &'
 
-## open iPhone Simulator
-alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
-
 ## open downloads
 alias od='open ~/downloads'
-
-## open hosts
-alias oh='subl -n /etc/hosts'
 
 ###################################
 #----------- Processes -----------#
 #---------------------------------#
+
 ## start fenix
 alias fenix='open "/Applications/Fenix.app"'
 
+## open iPhone Simulator
+alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
+
+########################################
+#----------- ZSH/VIM Utils  -----------#
+#--------------------------------------#
+
+## install vim bundle
+function getVimBundle {
+    cd ~/.vim/bundle && \ git clone $1
+}
+
+alias zshCheatsheet='w3m https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet'
+
+################################
+#----------- Utils  -----------#
+#------------------------------#
+
 ## show terminal history
 alias h='history'
+
+## get IP Address
+alias getip='ifconfig | grep "inet " | grep -v 127.0.0.1'
 
 ## kill specified process
 function kill {
@@ -49,28 +68,11 @@ function portpid {
     lsof -n -i4TCP:$1 | grep LISTEN
 }
 
-################################
-#----------- Utils  -----------#
-#------------------------------#
+## clear dns
+alias cleardns='sudo killall -HUP mDNSResponder'
 
-## get IP Address
-alias getip='ifconfig | grep "inet " | grep -v 127.0.0.1'
-
-## open activity monitor
-alias am='open "/Applications/Utilities/Activity Monitor.app"'
-
-## open ffb in firefox
-alias ffb='open -a Firefox http://games.espn.go.com/ffl/leagueoffice?leagueId=505064'
-
-## test find and replace file pattern (match/replace)
-function findandreplace_test {
-    find . -name '*'$1'*' -exec bash -c 'echo mv $0 ${0/'$1'/'$2'}' {} \;
-}
-
-## process find and replace file pattern (match/replace)
-function findandreplace_process {
-    find . -name '*'$1'*' -exec bash -c 'mv $0 ${0/'$1'/'$2'}' {} \;
-}
+## open hosts
+alias oh='subl -n /etc/hosts'
 
 ## make file executable
 function makeE {
@@ -82,30 +84,26 @@ function makeF {
     chmod 755 -R $1
 }
 
+## test find and replace file pattern (match/replace)
+function findandreplace_test {
+    find . -name '*'$1'*' -exec bash -c 'echo mv $0 ${0/'$1'/'$2'}' {} \;
+}
+
+## process find and replace file pattern (match/replace)
+function findandreplace_process {
+    find . -name '*'$1'*' -exec bash -c 'mv $0 ${0/'$1'/'$2'}' {} \;
+}
+
 function addToGifs {
     curl -o ~/Pictures/GIFS/$1.gif $3 && echo "![$2]($1.gif)" >> README.md && git add . && git commit -m "New $1.gif" && git push
 }
 
-#####################################
-#----------- Directories -----------#
-#-----------------------------------#
-
-## open Sites
 function sites {
     if [ $1 ]; then
         goto ~/Sites/$1
         subl .
     else
         goto ~/Sites/
-    fi
-}
-
-## open sites_creative
-function assets {
-    if [ $1 ]; then
-        goto ~/Sites_Creative/$1
-    else
-        goto ~/Sites_Creative/
     fi
 }
 
