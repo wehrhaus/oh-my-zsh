@@ -30,20 +30,23 @@ alias od='open ~/downloads'
 ###################################
 #----------- Processes -----------#
 #---------------------------------#
+
 ## start fenix
 alias fenix='open "/Applications/Fenix.app"'
 
 ## open iPhone Simulator
 alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
 
-####################################
-#----------- VIM Utils  -----------#
-#----------------------------------#
+########################################
+#----------- ZSH/VIM Utils  -----------#
+#--------------------------------------#
 
 ## install vim bundle
 function getVimBundle {
     cd ~/.vim/bundle && \ git clone $1
 }
+
+alias zshCheatsheet='w3m https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet'
 
 ################################
 #----------- Utils  -----------#
