@@ -1,7 +1,7 @@
 ![Oh My Zsh](https://s3.amazonaws.com/ohmyzsh/oh-my-zsh-logo.png)
 
 CUSTOM INSTALL:
-templates contains symlinked .zshrc and .profile
+Templates contains symlinked .zshrc and .profile
 
 Oh My Zsh is an open source, community-driven framework for managing your [zsh](http://www.zsh.org/) configuration. That sounds boring. Let's try this again.
 
