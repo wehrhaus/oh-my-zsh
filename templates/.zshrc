@@ -14,14 +14,13 @@ plugins=(git)
 
 # User configuration
 export CLIBS=$ZSH/custom/lib
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm/versions/node/v5.3.0/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
+source $ZSH/custom/tools/nerderyVPN.bash
 
 # custom libs
 . $ZSH/custom/tools/loadLibs.zsh
-. $ZSH/custom/tools/tab.bash
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -29,4 +28,3 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 . $ZSH/custom/lib/aliases.zsh
-

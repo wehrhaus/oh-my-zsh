@@ -41,9 +41,11 @@ alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulato
 #----------- ZSH/VIM Utils  -----------#
 #--------------------------------------#
 
+alias openzsh='subl $ZSH && subl ~/.zprofile && subl ~/.zshrc'
+
 ## install vim bundle
 function getVimBundle {
-    cd ~/.vim/bundle && \ git clone $1
+    cd ~/.vim/bundle && git clone $1
 }
 
 alias zshCheatsheet='w3m https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet'
@@ -54,6 +56,10 @@ alias zshCheatsheet='w3m https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatshe
 
 ## show terminal history
 alias h='history'
+
+function goto {
+    cd $1
+}
 
 ## get IP Address
 alias getip='ifconfig | grep "inet " | grep -v 127.0.0.1'
@@ -158,6 +164,8 @@ alias jwssh='ssh jwehrman@jwehrman.webfactional.com'
 #################################
 #----------- Apache  -----------#
 #-------------------------------#
+alias editApache='subl /etc/apache2/'
+
 function apacheCtl {
     echo $1'ing apache'
     sudo apachectl $1
