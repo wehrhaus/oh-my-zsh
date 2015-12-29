@@ -8,7 +8,6 @@ function vpnup {
             if exists VPNservice then
                 if current configuration of VPNservice is not connected then
                     connect VPNservice
-                    delay 3 -- enter password and connect
                 end if
             end if
         end tell
