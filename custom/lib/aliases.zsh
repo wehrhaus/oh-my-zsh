@@ -190,11 +190,3 @@ alias london='ssh london.sierrabravo.net'
 
 ## ssh into victoria
 alias victoria='ssh 204.62.150.50'
-
-##################################
-#----------- JPMorgan -----------#
-##################################
-
-alias jpmServer='cd ~/Sites/VML/JPMorgan/gbwm-rest-standalone'
-alias jpmDev='cd ~/Sites/VML/JPMorgan/goal-based-planner-client'
-alias jpmStartDev='jpmDev && npm run start'

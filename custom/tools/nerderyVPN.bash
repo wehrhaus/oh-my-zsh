@@ -1,6 +1,6 @@
 #!/usr/bin/env osascript
 
-function vpnUp {
+function vpnup {
 /usr/bin/env osascript <<-EOF
     tell application "System Events"
         tell current location of network preferences
@@ -16,7 +16,7 @@ function vpnUp {
 EOF
 }
 
-function vpnDown {
+function vpndown {
 /usr/bin/env osascript <<-EOF
     tell application "System Events"
         tell current location of network preferences
