@@ -54,6 +54,11 @@ alias zshCheatsheet='w3m https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatshe
 #----------- Utils  -----------#
 #------------------------------#
 
+## create symlink from SOURCE to TARGET
+function symlink {
+    ln -s $1 $2
+}
+
 ## show terminal history
 alias h='history'
 
