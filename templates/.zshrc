@@ -20,10 +20,9 @@ export CLIBS=$ZSH/custom/lib
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm/versions/node/v5.3.0/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
-source $ZSH/custom/tools/nerderyVPN.bash
 
 # custom libs
-. $ZSH/custom/tools/loadLibs.zsh
+. $ZSH/custom/tools/sourceFiles.zsh
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
