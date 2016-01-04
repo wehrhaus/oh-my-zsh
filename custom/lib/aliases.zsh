@@ -21,6 +21,9 @@ function aliasSearch {
 #----------- Finder -----------#
 #------------------------------#
 
+## Sublime Text 3
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+
 ## open finder in current directory
 alias o='open . &'
 
