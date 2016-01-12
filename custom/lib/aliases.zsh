@@ -181,6 +181,23 @@ function apacheCtl {
 
 alias apacheTest='apachectl configtest'
 
+##################################
+#----------- Vagrant  -----------#
+#--------------------------------#
+
+## list vagrant commands
+function vagrantDic {
+    echo 'Initialize machine: vagrant init {box}'
+    echo 'See status of machine: vagrant status'
+    echo 'Hibernate machine: vagrant suspend'
+    echo 'Reboot machine: vagrant reload'
+    echo 'Shutdown machine: vagrant shutdown'
+    echo 'Remove machine: vagrant destroy'
+    echo 'Recreate machine: vagrant up'
+    echo 'List boxes: vagrant box list'
+    echo 'Remove box: vagrant box remove {box}'
+}
+
 ###########################################
 #----------- NERDERY Specifics -----------#
 #-----------------------------------------#
