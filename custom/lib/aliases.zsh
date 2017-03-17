@@ -8,7 +8,7 @@ alias reload='source $ZSH/oh-my-zsh.sh'
 alias aliasRefresh='source $CLIBS/aliases.zsh'
 
 ## open aliases
-alias ea='subl -n $CLIBS/aliases.zsh'
+alias ea='atom -n $CLIBS/aliases.zsh'
 
 ## show all aliases
 alias showa='$ZSH/custom/tools/readfile.sh $CLIBS/aliases.zsh'
@@ -20,6 +20,8 @@ function aliasSearch {
 ################################
 #----------- Finder -----------#
 #------------------------------#
+## Atom
+alias atom='/Applications/Atom.app/Contents/Resources/app/atom.sh'
 
 ## Sublime Text 3
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
@@ -44,7 +46,7 @@ alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulato
 #----------- ZSH/VIM Utils  -----------#
 #--------------------------------------#
 
-alias openzsh='subl $ZSH && subl ~/.zprofile && subl ~/.zshrc'
+alias openzsh='atom $ZSH && atom ~/.zprofile && atom ~/.zshrc'
 
 ## install vim bundle
 function getVimBundle {
@@ -86,7 +88,7 @@ function portpid {
 alias cleardns='sudo killall -HUP mDNSResponder'
 
 ## open hosts
-alias oh='subl -n /etc/hosts'
+alias oh='atom -n /etc/hosts'
 
 ## make file executable
 function makeE {
@@ -115,7 +117,7 @@ function addToGifs {
 function sites {
     if [ $1 ]; then
         goto ~/Sites/$1
-        subl .
+        atom .
     else
         goto ~/Sites/
     fi
@@ -172,7 +174,7 @@ alias jwssh='ssh jwehrman@jwehrman.webfactional.com'
 #################################
 #----------- Apache  -----------#
 #-------------------------------#
-alias editApache='subl /etc/apache2/'
+alias editApache='atom /etc/apache2/'
 
 function apacheCtl {
     echo $1'ing apache'
@@ -199,20 +201,7 @@ function vagrantDic {
     echo 'Remove box: vagrant box remove {box}'
 }
 
-###########################################
-#----------- NERDERY Specifics -----------#
-#-----------------------------------------#
-
-## git clone from nerderylabs.com
-function gitClone {
-    sites && git clone git@git.nerderylabs.com:$1 && cd $1
-}
-
-## ssh into athens
-alias athens='ssh athens.sierrabravo.net'
-
-## ssh into london
-alias london='ssh london.sierrabravo.net'
-
-## ssh into victoria
-alias victoria='ssh 204.62.150.50'
+##########################################
+#----------- DUNAMI Specifics -----------#
+#----------------------------------------#
+alias dunami='sites dunami'
