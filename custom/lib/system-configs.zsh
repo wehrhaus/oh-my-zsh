@@ -23,7 +23,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 defaults write com.apple.dock showhidden -bool true
 
 # Show remaining battery time; hide percentage
-defaults write com.apple.menuextra.battery ShowPercent -string "NO"
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
 # Show Path bar in Finder

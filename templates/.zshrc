@@ -17,7 +17,6 @@ plugins=(git)
 
 # User configuration
 export CLIBS=$ZSH/custom/lib
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm/versions/node/v5.3.0/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -30,3 +29,9 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 . $ZSH/custom/lib/aliases.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jwehrman/sdks/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/jwehrman/sdks/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jwehrman/sdks/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/jwehrman/sdks/google-cloud-sdk/completion.zsh.inc'; fi
