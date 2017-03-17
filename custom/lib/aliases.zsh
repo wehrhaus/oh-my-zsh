@@ -8,7 +8,7 @@ alias reload='source $ZSH/oh-my-zsh.sh'
 alias aliasRefresh='source $CLIBS/aliases.zsh'
 
 ## open aliases
-alias ea='subl -n $CLIBS/aliases.zsh'
+alias ea='atom -n $CLIBS/aliases.zsh'
 
 ## show all aliases
 alias showa='$ZSH/custom/tools/readfile.sh $CLIBS/aliases.zsh'
@@ -96,7 +96,7 @@ function portpid {
 alias cleardns='sudo killall -HUP mDNSResponder'
 
 ## open hosts
-alias oh='atom /etc/hosts'
+alias oh='atom -n /etc/hosts'
 
 ## make file executable
 function makeE {
