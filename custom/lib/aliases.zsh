@@ -204,6 +204,7 @@ function vagrantDic {
     echo 'Shutdown machine: vagrant shutdown'
     echo 'Remove machine: vagrant destroy'
     echo 'Recreate machine: vagrant up'
+    echo 'Provision: vagrant up | vagrant reload -provision'
     echo 'List boxes: vagrant box list'
     echo 'Remove box: vagrant box remove {box}'
 }
