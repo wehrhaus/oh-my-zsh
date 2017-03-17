@@ -67,6 +67,10 @@ alias zshCheatsheet='w3m https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatshe
 #----------- Utils  -----------#
 #------------------------------#
 
+function copyToClipboard {
+  pbcopy < $1
+}
+
 ## create symlink from SOURCE to TARGET
 function symlink {
     ln -s $1 $2
