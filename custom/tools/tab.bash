@@ -68,3 +68,7 @@ function tab () {
   fi
 
 }
+
+function tabName {
+  echo -ne "\033]0;"$*"\007"
+}
