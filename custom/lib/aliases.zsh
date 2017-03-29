@@ -177,6 +177,15 @@ function svnUpdateSpecToSpec {
     svnUpdateSpec $2
 }
 
+#############################
+#----------- GIT -----------#
+#---------------------------#
+
+## perform rebase on branch passed via arg
+function update {
+  git checkout $1 && git pull && git checkout - && git rebase $1
+}
+
 ########################################################
 #----------- justinwehrman.com | webfaction -----------#
 #------------------------------------------------------#
@@ -216,4 +225,4 @@ function vagrantDic {
 ##########################################
 #----------- DUNAMI Specifics -----------#
 #----------------------------------------#
-alias dunami='sites dunami'
+alias dunami='goto ~/Sites/dunami'
