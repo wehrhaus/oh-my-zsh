@@ -186,6 +186,11 @@ function update {
   git checkout $1 && git pull && git checkout - && git rebase $1
 }
 
+## perform merge on branch passed via arg
+function merge {
+  git checkout $1 && git pull && git checkout - && git merge $1
+}
+
 ########################################################
 #----------- justinwehrman.com | webfaction -----------#
 #------------------------------------------------------#
@@ -225,4 +230,14 @@ function vagrantDic {
 ##########################################
 #----------- DUNAMI Specifics -----------#
 #----------------------------------------#
+alias dpull='dunamiup; sleep 2; git pull; dunamidown'
+
+alias dpush='dunamiup; sleep 2; git push; dunamidown'
+
+function dcheckout {
+  dunamiup && git checkout $1 && dunamidown
+}
+
 alias dunami='goto ~/Sites/dunami'
+
+alias dunamipr='goto ~/Sites/dunami-client-pr'
