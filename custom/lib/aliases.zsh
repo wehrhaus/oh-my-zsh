@@ -199,11 +199,13 @@ function gitd {
   git branch -d $1
 }
 
-########################################################
-#----------- justinwehrman.com | webfaction -----------#
-#------------------------------------------------------#
+################################################
+#----------- wehr.haus | webfaction -----------#
+#----------------------------------------------#
 ## ssh into webfactional
 alias jwssh='ssh jwehrman@jwehrman.webfactional.com'
+
+alias suncityssh='ssh lonrusssctx@web555.webfaction.com'
 
 #################################
 #----------- Apache  -----------#
