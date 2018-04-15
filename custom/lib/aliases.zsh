@@ -14,7 +14,7 @@ alias ea='atom -n $CLIBS/aliases.zsh'
 alias showa='$ZSH/custom/tools/readfile.sh $CLIBS/aliases.zsh'
 
 function aliasSearch {
-    showa | grep $1
+  showa | grep $1
 }
 
 ################################
@@ -47,7 +47,7 @@ alias pServer='python -m SimpleHTTPServer'
 
 ## start browser sync
 function bSync {
-    browser-sync start --server --files "*.css, *.html, *.js"
+  browser-sync start --server --files "*.css, *.html, *.js"
 }
 
 ########################################
@@ -58,7 +58,7 @@ alias openzsh='atom $ZSH && atom ~/.zprofile && atom ~/.zshrc'
 
 ## install vim bundle
 function getVimBundle {
-    cd ~/.vim/bundle && git clone $1
+  cd ~/.vim/bundle && git clone $1
 }
 
 alias zshCheatsheet='w3m https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet'
@@ -73,14 +73,14 @@ function copyToClipboard {
 
 ## create symlink from SOURCE to TARGET
 function symlink {
-    ln -s $1 $2
+  ln -s $1 $2
 }
 
 ## show terminal history
 alias h='history'
 
 function goto {
-    cd $1
+  cd $1
 }
 
 ## get IP Address
@@ -88,12 +88,12 @@ alias getip="ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{print $2}'"
 
 ## kill specified process
 function kill {
-    sudo kill $1
+  sudo kill $1
 }
 
 ## get pid running port $1
 function portpid {
-    lsof -n -i4TCP:$1 | grep LISTEN
+  lsof -n -i4TCP:$1 | grep LISTEN
 }
 
 ## clear dns
@@ -104,35 +104,35 @@ alias oh='atom -n /etc/hosts'
 
 ## make file executable
 function makeE {
-    chmod +x $1
+  chmod +x $1
 }
 
 ## make folder executable
 function makeF {
-    chmod 755 -R $1
+  chmod 755 -R $1
 }
 
 ## test find and replace file pattern (match/replace)
 function findandreplace_test {
-    find . -name '*'$1'*' -exec bash -c 'echo mv $0 ${0/'$1'/'$2'}' {} \;
+  find . -name '*'$1'*' -exec bash -c 'echo mv $0 ${0/'$1'/'$2'}' {} \;
 }
 
 ## process find and replace file pattern (match/replace)
 function findandreplace_process {
-    find . -name '*'$1'*' -exec bash -c 'mv $0 ${0/'$1'/'$2'}' {} \;
+  find . -name '*'$1'*' -exec bash -c 'mv $0 ${0/'$1'/'$2'}' {} \;
 }
 
 function addToGifs {
-    curl -o ~/Pictures/GIFS/$1.gif $3 && echo "![$2]($1.gif)" >> README.md && git add . && git commit -m "New $1.gif" && git push
+  curl -o ~/Pictures/GIFS/$1.gif $3 && echo "![$2]($1.gif)" >> README.md && git add . && git commit -m "New $1.gif" && git push
 }
 
 function sites {
-    if [ $1 ]; then
-        goto ~/Sites/$1
-        atom .
-    else
-        goto ~/Sites/
-    fi
+  if [ $1 ]; then
+    goto ~/Sites/$1
+    atom .
+  else
+    goto ~/Sites/
+  fi
 }
 
 #############################
@@ -147,34 +147,34 @@ alias svnsetignore='svn propset svn:ignore -F .svnignore .'
 
 ## svn add all new files
 function svnaddspec {
-    svn add $(svn st | awk 'BEGIN{FS="       "} $1=="?" && $2 !~ /\.(sql|log|tmpl)$/ {print $2}')
+  svn add $(svn st | awk 'BEGIN{FS="       "} $1=="?" && $2 !~ /\.(sql|log|tmpl)$/ {print $2}')
 }
 
 ## svn revert all missing modified files
 function svnrevertmissingspec {
-    svn revert $(svn st | awk 'BEGIN{FS="       "} $1=="!" && $2 !~ /\.(sql|log|tmpl)$/ {print $2}')
+  svn revert $(svn st | awk 'BEGIN{FS="       "} $1=="!" && $2 !~ /\.(sql|log|tmpl)$/ {print $2}')
 }
 
 ## svn revert all modified files
 function svnrevertspec {
-    svn revert $(svn st | awk 'BEGIN{FS="       "} $1=="M" && $2 !~ /\.(sql|log|tmpl)$/ {print $2}')
+  svn revert $(svn st | awk 'BEGIN{FS="       "} $1=="M" && $2 !~ /\.(sql|log|tmpl)$/ {print $2}')
 }
 
 ## svn commit current directory
 function svncomm {
-    svn commit -m "$1"
+  svn commit -m "$1"
 }
 
 ## svn update specific directory
 function svnUpdateSpec {
-    svn update $1
-    cd $1
+  svn update $1
+  cd $1
 }
 
 ## svn update specific directory to specific directory
 function svnUpdateSpecToSpec {
-    cdTo $1
-    svnUpdateSpec $2
+  cdTo $1
+  svnUpdateSpec $2
 }
 
 #############################
@@ -191,10 +191,17 @@ function merge {
   git checkout $1 && git pull && git checkout - && git merge $1
 }
 
+## list local and remote git branches
+alias lbranch='git branch -a'
+
+## delete git branch
+function gitd {
+  git branch -d $1
+}
+
 ################################################
 #----------- wehr.haus | webfaction -----------#
 #----------------------------------------------#
-
 ## ssh into webfactional
 alias jwssh='ssh jwehrman@jwehrman.webfactional.com'
 
@@ -206,11 +213,27 @@ alias suncityssh='ssh lonrusssctx@web555.webfaction.com'
 alias editApache='subl /etc/apache2/ && oh'
 
 function apacheCtl {
-    echo $1'ing apache'
-    sudo apachectl $1
+  echo $1'ing apache'
+  sudo apachectl $1
 }
 
 alias apacheTest='apachectl configtest'
+
+################################
+#----------- NGINX  -----------#
+#------------------------------#
+
+## cd to nginx
+alias gotoNginx='cd /usr/local/etc/nginx/'
+
+## stop nginx
+alias nginStop='sudo nginx -s stop'
+
+## start nginx
+function nginStart {
+  perl -pe 's/DNS_SERVER/10.12.1.2/g' -i /usr/local/etc/nginx/conf.d/includes/resolver.includes
+  sudo nginx
+}
 
 ##################################
 #----------- Vagrant  -----------#
@@ -218,16 +241,16 @@ alias apacheTest='apachectl configtest'
 
 ## list vagrant commands
 function vagrantDic {
-    echo 'Initialize machine: vagrant init {box}'
-    echo 'See status of machine: vagrant status'
-    echo 'Hibernate machine: vagrant suspend'
-    echo 'Reboot machine: vagrant reload'
-    echo 'Shutdown machine: vagrant shutdown'
-    echo 'Remove machine: vagrant destroy'
-    echo 'Recreate machine: vagrant up'
-    echo 'Provision: vagrant up | vagrant reload -provision'
-    echo 'List boxes: vagrant box list'
-    echo 'Remove box: vagrant box remove {box}'
+  echo 'Initialize machine: vagrant init {box}'
+  echo 'See status of machine: vagrant status'
+  echo 'Hibernate machine: vagrant suspend'
+  echo 'Reboot machine: vagrant reload'
+  echo 'Shutdown machine: vagrant shutdown'
+  echo 'Remove machine: vagrant destroy'
+  echo 'Recreate machine: vagrant up'
+  echo 'Provision: vagrant up | vagrant reload -provision'
+  echo 'List boxes: vagrant box list'
+  echo 'Remove box: vagrant box remove {box}'
 }
 
 ##########################################
@@ -241,6 +264,16 @@ function dcheckout {
   dunamiup && git checkout $1 && dunamidown
 }
 
-alias dunami='goto ~/Sites/dunami'
+function dunr {
+  cd ~/Sites/dunami
+  cd $1
+  if [ $2 ]; then
+    cd $2
+  fi
+}
 
-alias dunamipr='goto ~/Sites/dunami-client-pr'
+alias du='dunamiup'
+
+alias dd='dunamidown'
+
+alias ds='dunamistatus'
