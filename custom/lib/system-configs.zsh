@@ -13,6 +13,9 @@
 # →
 # PS1="\n\e[1;34mwehrhaus\e[m:\w\n👽 "
 
+# Show hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles YES
+
 # Show all filename extensions in Finder
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
