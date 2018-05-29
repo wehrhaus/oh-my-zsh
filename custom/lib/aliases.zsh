@@ -32,12 +32,18 @@ alias o='open . &'
 ## open downloads
 alias od='open ~/downloads'
 
+## zip folder contents {name/folder}
+function zipFolder {
+  zip -r -X $1 *
+  if [ $2 ]; then
+    cd $2
+  fi
+  zip -r -X $1 *
+}
+
 ###################################
 #----------- Processes -----------#
 #---------------------------------#
-
-## start fenix
-alias fenix='open "/Applications/Fenix.app"'
 
 ## open iPhone Simulator
 alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
@@ -256,14 +262,8 @@ function vagrantDic {
 ##########################################
 #----------- DUNAMI Specifics -----------#
 #----------------------------------------#
-alias dpull='dunamiup; sleep 2; git pull; dunamidown'
 
-alias dpush='dunamiup; sleep 2; git push; dunamidown'
-
-function dcheckout {
-  dunamiup && git checkout $1 && dunamidown
-}
-
+# Traverse dunami repos
 function dunr {
   cd ~/Sites/dunami
   cd $1
@@ -272,8 +272,17 @@ function dunr {
   fi
 }
 
+# Start VPN
 alias du='dunamiup'
 
+# Quit VPN
 alias dd='dunamidown'
 
+# Status VPN
 alias ds='dunamistatus'
+
+# Create infl-dev-version-bump branch
+alias inflDevBump='git checkout -b feature/infl-dev-version-bump'
+
+# Delete infl-dev-version-bump branch
+alias inflDevBumpDel='git branch -d feature/infl-dev-version-bump'

@@ -22,5 +22,5 @@ ssh-add -l &>/dev/null
 if [ "$?" == 1 ]; then
     # The agent has no identities.
     # Time to add one.
-    ssh-add -t 4h
+    ssh-add -t 24h
 fi
