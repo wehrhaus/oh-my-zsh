@@ -8,7 +8,7 @@ alias reload='source $ZSH/oh-my-zsh.sh'
 alias aliasRefresh='source $CLIBS/aliases.zsh'
 
 ## open aliases
-alias ea='atom -n $CLIBS/aliases.zsh'
+alias ea='code -n $CLIBS/aliases.zsh'
 
 ## show all aliases
 alias showa='$ZSH/custom/tools/readfile.sh $CLIBS/aliases.zsh'
@@ -26,6 +26,8 @@ alias atom='/Applications/Atom.app/Contents/Resources/app/atom.sh'
 ## Sublime Text 3
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
+alias gChrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+
 ## open finder in current directory
 alias o='open . &'
 
@@ -34,11 +36,11 @@ alias od='open ~/downloads'
 
 ## zip folder contents {name/folder}
 function zipFolder {
-  zip -r -X $1 *
+  zip -r -X $1 ./
   if [ $2 ]; then
     cd $2
   fi
-  zip -r -X $1 *
+  zip -r -X $1 ./
 }
 
 ###################################
@@ -60,7 +62,7 @@ function bSync {
 #----------- ZSH/VIM Utils  -----------#
 #--------------------------------------#
 
-alias openzsh='atom $ZSH && atom ~/.zprofile && atom ~/.zshrc'
+alias openzsh='code $ZSH ~/.zprofile ~/.zshrc'
 
 ## install vim bundle
 function getVimBundle {
@@ -72,6 +74,7 @@ alias zshCheatsheet='w3m https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatshe
 ################################
 #----------- Utils  -----------#
 #------------------------------#
+alias clr='clear'
 
 function copyToClipboard {
   pbcopy < $1
@@ -106,7 +109,7 @@ function portpid {
 alias cleardns='sudo killall -HUP mDNSResponder'
 
 ## open hosts
-alias oh='atom -n /etc/hosts'
+alias oh='sudo vim /etc/hosts'
 
 ## make file executable
 function makeE {
@@ -135,7 +138,7 @@ function addToGifs {
 function sites {
   if [ $1 ]; then
     goto ~/Sites/$1
-    atom .
+    code .
   else
     goto ~/Sites/
   fi
@@ -187,22 +190,21 @@ function svnUpdateSpecToSpec {
 #----------- GIT -----------#
 #---------------------------#
 
-## perform rebase on branch passed via arg
-function update {
-  git checkout $1 && git pull && git checkout - && git rebase $1
-}
-
 ## perform merge on branch passed via arg
 function merge {
   git checkout $1 && git pull && git checkout - && git merge $1
 }
 
-## list local and remote git branches
-alias lbranch='git branch -a'
+## rename local git branch 'gitRenameLocal'
+function gitRenameLocal {
+  git branch -m $1
+}
 
-## delete git branch
-function gitd {
-  git branch -d $1
+## rename remote git branch 'gitRenameRemote'
+function gitRenameRemote {
+  git branch -m $1
+  git push origin :$1 $2
+  git push origin -u $2
 }
 
 ################################################
@@ -241,6 +243,9 @@ function nginStart {
   sudo nginx
 }
 
+## restart nginx
+alias nginRestart='nginStop && nginStart'
+
 ##################################
 #----------- Vagrant  -----------#
 #--------------------------------#
@@ -272,14 +277,28 @@ function dunr {
   fi
 }
 
+# VS Dunami Front-End
+function vsfe {
+  code ~/Sites/dunami/front-end/$1
+}
+
+#VS Dunami Proxies
+function vspr {
+  if [ $1 ]; then
+    code ~/Sites/dunami/proxies/$1
+  else
+    code ~/Sites/dunami/proxies
+  fi
+}
+
 # Start VPN
-alias du='dunamiup'
+alias vpnu='dunamiup'
 
 # Quit VPN
-alias dd='dunamidown'
+alias vpnd='dunamidown'
 
 # Status VPN
-alias ds='dunamistatus'
+alias vpns='dunamistatus'
 
 # Create infl-dev-version-bump branch
 alias inflDevBump='git checkout -b feature/infl-dev-version-bump'
