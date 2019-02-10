@@ -13,9 +13,10 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git virtualenv)
 
 # User configuration
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
 export CLIBS=$ZSH/custom/lib
 
 source $ZSH/oh-my-zsh.sh
@@ -30,3 +31,6 @@ source $ZSH/oh-my-zsh.sh
 #
 . $ZSH/custom/lib/aliases.zsh
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
