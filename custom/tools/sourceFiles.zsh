@@ -4,5 +4,4 @@ for config_file ($ZSH/custom/lib/*); do
 done
 
 # Source any other files needed
-source $ZSH/custom/tools/dunamiVPN.bash
 source $ZSH/custom/tools/tab.bash
