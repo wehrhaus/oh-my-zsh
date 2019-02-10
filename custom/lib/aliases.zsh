@@ -20,13 +20,6 @@ function aliasSearch {
 ################################
 #----------- Finder -----------#
 #------------------------------#
-## Atom
-alias atom='/Applications/Atom.app/Contents/Resources/app/atom.sh'
-
-## Sublime Text 3
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-
-alias gChrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 ## open finder in current directory
 alias o='open . &'
@@ -131,10 +124,6 @@ function findandreplace_process {
   find . -name '*'$1'*' -exec bash -c 'mv $0 ${0/'$1'/'$2'}' {} \;
 }
 
-function addToGifs {
-  curl -o ~/Pictures/GIFS/$1.gif $3 && echo "![$2]($1.gif)" >> README.md && git add . && git commit -m "New $1.gif" && git push
-}
-
 function sites {
   if [ $1 ]; then
     goto ~/Sites/$1
@@ -142,48 +131,6 @@ function sites {
   else
     goto ~/Sites/
   fi
-}
-
-#############################
-#----------- SVN -----------#
-#---------------------------#
-
-## svn update current directory
-alias svnup='svn update'
-
-## make directory aware of .svnignore file
-alias svnsetignore='svn propset svn:ignore -F .svnignore .'
-
-## svn add all new files
-function svnaddspec {
-  svn add $(svn st | awk 'BEGIN{FS="       "} $1=="?" && $2 !~ /\.(sql|log|tmpl)$/ {print $2}')
-}
-
-## svn revert all missing modified files
-function svnrevertmissingspec {
-  svn revert $(svn st | awk 'BEGIN{FS="       "} $1=="!" && $2 !~ /\.(sql|log|tmpl)$/ {print $2}')
-}
-
-## svn revert all modified files
-function svnrevertspec {
-  svn revert $(svn st | awk 'BEGIN{FS="       "} $1=="M" && $2 !~ /\.(sql|log|tmpl)$/ {print $2}')
-}
-
-## svn commit current directory
-function svncomm {
-  svn commit -m "$1"
-}
-
-## svn update specific directory
-function svnUpdateSpec {
-  svn update $1
-  cd $1
-}
-
-## svn update specific directory to specific directory
-function svnUpdateSpecToSpec {
-  cdTo $1
-  svnUpdateSpec $2
 }
 
 #############################
@@ -263,45 +210,3 @@ function vagrantDic {
   echo 'List boxes: vagrant box list'
   echo 'Remove box: vagrant box remove {box}'
 }
-
-##########################################
-#----------- DUNAMI Specifics -----------#
-#----------------------------------------#
-
-# Traverse dunami repos
-function dunr {
-  cd ~/Sites/dunami
-  cd $1
-  if [ $2 ]; then
-    cd $2
-  fi
-}
-
-# VS Dunami Front-End
-function vsfe {
-  code ~/Sites/dunami/front-end/$1
-}
-
-#VS Dunami Proxies
-function vspr {
-  if [ $1 ]; then
-    code ~/Sites/dunami/proxies/$1
-  else
-    code ~/Sites/dunami/proxies
-  fi
-}
-
-# Start VPN
-alias vpnu='dunamiup'
-
-# Quit VPN
-alias vpnd='dunamidown'
-
-# Status VPN
-alias vpns='dunamistatus'
-
-# Create infl-dev-version-bump branch
-alias inflDevBump='git checkout -b feature/infl-dev-version-bump'
-
-# Delete infl-dev-version-bump branch
-alias inflDevBumpDel='git branch -d feature/infl-dev-version-bump'
