@@ -210,3 +210,9 @@ function vagrantDic {
   echo 'List boxes: vagrant box list'
   echo 'Remove box: vagrant box remove {box}'
 }
+
+#########################################
+#----------- EquipmentShare  -----------#
+#---------------------------------------#
+
+alias es='Sites && cd EquipmentShare'
