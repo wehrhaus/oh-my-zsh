@@ -16,7 +16,7 @@ DISABLE_AUTO_TITLE="true"
 plugins=(git virtualenv)
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
+# export PATH=/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
 export CLIBS=$ZSH/custom/lib
 
 source $ZSH/oh-my-zsh.sh
@@ -34,3 +34,32 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# ES SPECIFIC
+export LEVEL=stage
+export AWS_PROFILE=stage-esapi
+export PYTHONUNBUFFERED=1
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.fastlane/bin:$HOME/.flutter/bin:/usr/local/opt/dart/libexec:$PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Sites/EquipmentShare
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+export PATH="$PATH:/Users/justinwehrman/.nvm/versions/node/v14.5.0/bin"
+
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+export PATH="/usr/local/bin/charm:$PATH" #pycharm
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+export FLUTTER_ROOT="$HOME/.flutter/bin"
+export DART_ROOT="/usr/local/opt/dart/libexec"
+
+eval "$(pyenv init -)"
+
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export CPATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin `xcrun --show-sdk-path`/usr/include"
